@@ -13,22 +13,18 @@ const images = [
   },
 ];
 
-const elementsGallery = images.map(image => {
-  const stringElementGallery = `<li class='gallery_item'><img class='gallery_image' src = ${image.url} alt = ${image.alt} width = 150px height=90px></li>`;
-  return `${stringElementGallery}`;
-});
+const list = document.querySelector(".gallery");
 
-const imageList = document.querySelector('ul');
-for (let i = 0; i < elementsGallery.length; i+=1) {
-   imageList.insertAdjacentHTML('beforeend', elementsGallery[i]);
-} 
-  
-imageList.classList.add('js-gallery');
-imageList.style.display = 'flex';
-imageList.style.height = '100%';
-imageList.style.width = '100%';
-imageList.style.justifyContent = 'space-between';
-imageList.style.gap = '20px';
+const markup = images
+  .map(({url, alt}) => `<li class='gallery_item'><img class='gallery_image' src = ${url} alt = ${alt} width = 150px height=90px></li>`)
+  .join("");
 
+console.log(markup);
+list.insertAdjacentHTML("beforeend", markup);
 
-
+list.classList.add('js-gallery');
+list.style.display = 'flex';
+list.style.height = '100%';
+list.style.width = '100%';
+list.style.justifyContent = 'space-between';
+list.style.gap = '20px';
